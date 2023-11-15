@@ -5,7 +5,6 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 
 import indexRouter from "./routes/index.js";
-import usersRouter from "./routes/users.js";
 
 // ES6 modules don't have __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -17,9 +16,8 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "front", "dist")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 export default app;
