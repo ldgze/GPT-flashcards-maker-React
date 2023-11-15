@@ -1,12 +1,17 @@
 import express from "express";
-import path from "path";
+import path, { dirname } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import { fileURLToPath } from "url";
 
-import indexRouter from "./routes/index";
-import usersRouter from "./routes/users";
+import indexRouter from "./routes/index.js";
+import usersRouter from "./routes/users.js";
 
-const app = express();
+// ES6 modules don't have __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+let app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -17,4 +22,4 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-module.exports = app;
+export default app;

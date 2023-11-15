@@ -2,8 +2,13 @@
   "name": "gpt-flashcards-maker-react",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "author": "Dongze Li",
+  "license": "MIT",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www"
+    "preinstall": "cd front && npm install && npm run build",
+    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www.js",
+    "initDB": "mongoimport -d photoSharing -c photos --jsonArray db/initialPhotoSharingData.json"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
