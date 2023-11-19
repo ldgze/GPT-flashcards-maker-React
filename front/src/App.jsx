@@ -1,3 +1,4 @@
+import { AppFooter } from "./layout/AppFooter";
 
 export default function App() {
   async function testBack() {
@@ -10,8 +11,8 @@ export default function App() {
   testBack();
 
   return (
-    <>
-      <h1>Hello!</h1>
+    <div>
+      <h1>GPT Flashcards Maker React</h1>
       <div className="card">
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
@@ -20,6 +21,9 @@ export default function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+
+      <AppFooter />
+      
+    </div>
   );
 }
