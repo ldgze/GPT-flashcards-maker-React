@@ -16,7 +16,7 @@ router.get("/api/cards", async (req, res) => {
       res.status(500).send("An error occurred while fetching user's cards");
     }
   } else {
-    res.redirect("/login");
+    return res.status(401).json({ message: "Not authorized" });
   }
 });
 

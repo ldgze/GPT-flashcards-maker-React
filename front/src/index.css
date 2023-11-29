@@ -26,7 +26,9 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column; /* Add this to align items vertically */
+  align-items: center; /* This will keep horizontal centering */
+  justify-content: flex-start; /* Aligns content to the start (top) */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -66,4 +68,78 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+body {
+  padding-top: 60px; /* Adjust based on the height of your navbar */
+  padding-bottom: 56px; /* Adjust based on the height of your footer */
+}
+
+.error-message-wrapper {
+  position: fixed;
+  top: 10%; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050; /* To overlay above other elements */
+  width: 80%; /* Adjust as needed */
+  max-width: 600px; /* Maximum width */
+  animation: fadeIn 0.5s; /* Optional animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cards-gallery {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: #333;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #555;
+}
+
+.card input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.btn-group button {
+  margin-right: 5px;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-primary {
+  background-color: #007bff;
 }
