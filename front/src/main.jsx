@@ -1,6 +1,7 @@
 import React, { useState, useCallback, createContext } from "react";
 import ReactDOM from "react-dom/client";
 import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 

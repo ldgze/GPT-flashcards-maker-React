@@ -1,6 +1,39 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ErrorContext } from "../main";
 
 export function NavBar() {
+  const navigate = useNavigate();
+  const { addError, clearErrors } = useContext(ErrorContext);
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        clearErrors();
+        addError({ msg: "Logout successful", type: "success" });
+        addError({
+          msg: "Please enter your credentials. If you don't have an account, please register first.",
+          type: "info",
+        });
+        addError({
+          msg: "The default username is 'user' and the default password is 'password'",
+          type: "info",
+        });
+        navigate("/login"); // Redirect to login page after successful logout
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
@@ -25,42 +58,14 @@ export function NavBar() {
                 Export All Cards
               </Link>
             </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+            <li className="nav-item">
+              <button
+                className="nav-link btn btn-link"
+                onClick={handleLogout}
+                id="logout"
               >
-                Account Options
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <Link to="/logout" className="dropdown-item" id="logout">
-                    Logout
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/update-account"
-                    className="dropdown-item"
-                    id="update-account"
-                  >
-                    Update Account
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/delete-account"
-                    className="dropdown-item"
-                    id="delete-account"
-                  >
-                    Delete Account
-                  </Link>
-                </li>
-              </ul>
+                Logout
+              </button>
             </li>
           </ul>
         </div>

@@ -74,16 +74,24 @@ passport.deserializeUser(function (user, cb) {
   });
 });
 
-router.post(
-  "/api/login/password",
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    failureMessage: true,
-  }),
-  function (req, res) {
-    res.redirect("/");
-  },
-);
+router.post("/api/login/password", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err); // Handle error
+    }
+    if (!user) {
+      // Authentication failed
+      return res.status(401).json({ ok: false, msg: info.message });
+    }
+    req.logIn(user, (loginErr) => {
+      if (loginErr) {
+        return next(loginErr); // Handle login error
+      }
+      // Authentication and login successful
+      return res.status(200).json({ ok: true, msg: "Logged in successfully" });
+    });
+  })(req, res, next);
+});
 
 router.post("/api/logout", function (req, res, next) {
   req.logout(function (err) {

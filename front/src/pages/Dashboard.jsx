@@ -14,6 +14,14 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/cards");
       if (res.status === 401) {
+        addError({
+          msg: "Please enter your credentials. If you don't have an account, please register first.",
+          type: "info",
+        });
+        addError({
+          msg: "The default username is 'user' and the default password is 'password'",
+          type: "info",
+        });
         navigate("/login"); // Navigate to login on 401 status
         return;
       }

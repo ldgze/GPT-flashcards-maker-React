@@ -3,16 +3,16 @@ import { useNavigate } from "react-router-dom";
 import BasePage from "./BasePage";
 import { ErrorContext } from "../main";
 
-export default function Login() {
-  const loginFormRef = useRef(null);
+export default function Register() {
+  const registerFormRef = useRef(null);
   const navigate = useNavigate();
-  const { addError, clearErrors } = useContext(ErrorContext);
+  const { addError } = useContext(ErrorContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(loginFormRef.current);
+    const formData = new FormData(registerFormRef.current);
 
-    const response = await fetch("/api/login/password", {
+    const res = await fetch("/api/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,55 +20,51 @@ export default function Login() {
       body: JSON.stringify(Object.fromEntries(formData.entries())),
     });
 
-    console.log("response", response);
-
-    if (!response.ok) {
-      const data = await response.json();
+    if (!res.ok) {
+      const data = await res.json();
       addError({ msg: data.msg, type: "danger" });
     } else {
-      // Login successful
-      clearErrors();
-      addError({ msg: "Login successful", type: "success" });
-      navigate("/"); // Navigate to dashboard or home page
+      addError({ msg: "Signup successful, please log in", type: "success" });
+      navigate("/login"); // Navigate to login page
     }
   };
 
   return (
     <BasePage>
       <div className="form-signin w-100 m-auto">
-        <form ref={loginFormRef} onSubmit={handleSubmit}>
-          <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+        <form ref={registerFormRef} onSubmit={handleSubmit}>
+          <h1 className="h3 mb-3 fw-normal">Register</h1>
           <div className="form-floating">
             <input
               type="text"
               className="form-control"
-              id="floatingInput"
+              id="floatingInputRegister"
               placeholder="username"
               name="username"
               required
             />
-            <label htmlFor="floatingInput">Username</label>
+            <label htmlFor="floatingInputRegister">Username</label>
           </div>
           <div className="form-floating">
             <input
               type="password"
               className="form-control"
-              id="floatingPassword"
+              id="floatingPasswordRegister"
               placeholder="Password"
               name="password"
               required
             />
-            <label htmlFor="floatingPassword">Password</label>
+            <label htmlFor="floatingPasswordRegister">Password</label>
           </div>
           <button className="btn btn-primary w-100 py-2" type="submit">
-            Sign in
+            Sign Up
           </button>
         </form>
         <button
           className="btn btn-secondary w-100 py-2 mt-2"
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/login")}
         >
-          Go to Sign Up
+          Go to Sign In
         </button>
       </div>
     </BasePage>
