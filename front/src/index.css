@@ -149,3 +149,8 @@ body {
   top: 45px; /* Adjust this value based on your navbar's height */
   align-self: start; /* This ensures it aligns to the top of the container */
 }
+
+.dark-bg {
+  background-color: #343a40; /* Dark background for the body */
+  color: #fff; /* Text color for the body */
+}
