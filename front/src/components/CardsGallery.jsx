@@ -2,7 +2,14 @@ import { useState, useContext } from "react";
 import { ErrorContext } from "../main";
 import PropTypes from "prop-types";
 
-export function CardsGallery({ cards, reloadCards }) {
+export function CardsGallery({
+  cards,
+  reloadCards,
+  currentPage,
+  setCurrentPage,
+  setSortField,
+  setSortOrder,
+}) {
   console.log("👏🏻 Render CardsGallery cards=", cards);
 
   const [editingCard, setEditingCard] = useState(null);
@@ -138,10 +145,46 @@ export function CardsGallery({ cards, reloadCards }) {
     return cards.map(renderCard);
   }
 
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    reloadCards();
+  };
+
+  const handleSortChange = (field, order) => {
+    setSortField(field);
+    setSortOrder(order);
+    reloadCards();
+  };
+
   return (
     <div className="cards-gallery">
       <h2>My Flashcards</h2>
+
+      {/* Sorting UI */}
+      <div>
+        <button onClick={() => handleSortChange("createdate", "asc")}>
+          Sort by Date Asc
+        </button>
+        <button onClick={() => handleSortChange("createdate", "desc")}>
+          Sort by Date Desc
+        </button>
+        {/* Add more sorting options as needed */}
+      </div>
+
       <div id="cards">{renderCards()}</div>
+
+      {/* Pagination UI */}
+      <div>
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span>Page {currentPage}</span>
+        <button onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+        {/* You might want to disable the Next button based on total page count */}
+      </div>
     </div>
   );
 }
@@ -155,4 +198,8 @@ CardsGallery.propTypes = {
     }),
   ),
   reloadCards: PropTypes.func.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  setSortField: PropTypes.func.isRequired,
+  setSortOrder: PropTypes.func.isRequired,
 };

@@ -6,8 +6,20 @@ router.get("/api/cards", async (req, res) => {
   if (req.user) {
     const username = req.user.username;
 
+    // Extract query parameters
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const sortBy = req.query.sortBy || "createdate";
+    const order = req.query.order || "desc";
+
     try {
-      const cards = await myDB.getCardsByUsername(username);
+      const cards = await myDB.getCardsByUsername(
+        username,
+        page,
+        limit,
+        sortBy,
+        order,
+      );
 
       res.status(200).json(cards);
     } catch (error) {

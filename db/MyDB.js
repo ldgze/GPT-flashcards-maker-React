@@ -13,15 +13,29 @@ function MyDB() {
     return { client, db };
   };
 
-  myDB.getCardsByUsername = async (username) => {
+  myDB.getCardsByUsername = async (
+    username,
+    page = 1,
+    limit = 10,
+    sortBy = "createdate",
+    order = "desc",
+  ) => {
     const { client, db } = connect();
     const cardsCollection = db.collection("cards");
+
+    const skips = limit * (page - 1);
+    const sortOrder = order === "asc" ? 1 : -1;
 
     try {
       const queryObj = {
         "user.username": username,
       };
-      return await cardsCollection.find(queryObj).toArray();
+      return await cardsCollection
+        .find(queryObj)
+        .sort({ [sortBy]: sortOrder })
+        .skip(skips)
+        .limit(limit)
+        .toArray();
     } finally {
       console.log("db closing connection");
       client.close();
