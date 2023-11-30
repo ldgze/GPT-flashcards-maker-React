@@ -1,5 +1,10 @@
 import express from "express";
 import myDB from "../db/MyDB.js";
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 let router = express.Router();
 
 router.get("/api/cards", async (req, res) => {
@@ -82,69 +87,49 @@ router.post("/api/cards/create", async (req, res) => {
   }
 });
 
-function formatToFlashcards(generatedText) {
-  // Define a regular expression pattern to identify questions and answers.
-  // This pattern will depend on how the text is formatted.
-  // For example, if each question is prefixed by 'Q:' and each answer by 'A:', you might use:
-  const pattern = /Q: (.*?) A: (.*?)(?=\nQ:|$)/gs;
-
-  // Initialize an empty array to store flashcards
-  const flashcards = [];
-
-  // Use the pattern to extract question-answer pairs
-  let match;
-  while ((match = pattern.exec(generatedText)) !== null) {
-    // Each match will have two groups: question and answer
-    const [, question, answer] = match;
-
-    // Push the question-answer pair as an object into the flashcards array
-    flashcards.push({ question, answer });
-  }
-
-  return flashcards;
-}
-
 router.post("/api/cards/generate", async (req, res) => {
   if (req.user) {
     const username = req.user.username;
 
     const { text, number } = req.body;
 
-    const prompt = `Create ${number} flashcards based on the following text, each containing a question and a corresponding answer. Ensure that these questions and answers are relevant to the text content. The text is:${text}. Format each flashcard as follows:
-    Q: [question]
-    A: [answer]`;
+    const prompt = `
+Create ${number} flashcards in a JSON-like format based on the following text. Each flashcard should be a JSON object with 'question' and 'answer' keys. Format the flashcards as an array of objects.
 
+Text: ${text}
+
+For example, the response should be formatted like this:
+[
+  { "question": "What is JavaScript?", "answer": "JavaScript is a programming language used to create interactive effects within web browsers." },
+  { "question": "What are the core technologies of the World Wide Web?", "answer": "The core technologies of the World Wide Web are HTML, CSS, and JavaScript." }
+  // ... other flashcards
+]
+`;
+
+    // Continue with your existing fetch() code...
+
+    console.log(prompt);
     try {
-      const response = await fetch(
-        "https://api.openai.com/v1/engines/davinci/completions",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            prompt: prompt,
-            max_tokens: 100, // or other parameters as needed
-          }),
-        },
-      );
-      if (!response.ok) {
-        throw new Error("OpenAI API request failed");
+      const response = await openai.chat.completions.create({
+        messages: [{ role: "user", content: prompt }],
+        model: "gpt-3.5-turbo",
+      });
+
+      console.log("Response", response);
+
+      const openAIResponse = response;
+      const generatedText = openAIResponse.choices[0].message.content;
+      console.log("OpenAIResponse", openAIResponse);
+      console.log("GeneratedText", generatedText);
+      const generatedFlashcards = JSON.parse(generatedText);
+      console.log("generatedFlashcards", generatedFlashcards);
+      console.log("generatedFlashcards.length", generatedFlashcards.length);
+      if (generatedFlashcards.length === 0) {
+        return res.status(400).send("No flashcards generated");
       }
 
-      const openAIResponse = await response.json();
-      const generatedText = openAIResponse.choices[0].text;
-      // Process and format the generatedText into flashcards format
-      // ...
-      const generatedFlashcards = formatToFlashcards(generatedText);
-      try {
-        await myDB.insertManyCards(generatedFlashcards, username);
-        res.json(generatedFlashcards);
-      } catch (error) {
-        console.error("Error:", error);
-        res.status(500).send("Failed to insert cards");
-      }
+      await myDB.insertManyCards(generatedFlashcards, username);
+      res.json(generatedFlashcards);
     } catch (error) {
       console.error("Error:", error);
       res.status(500).send("Failed to generate cards");

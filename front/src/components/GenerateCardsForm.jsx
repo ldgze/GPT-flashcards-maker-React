@@ -17,9 +17,11 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
         body: JSON.stringify({ text, number }),
       });
 
+      console.log("Response:", response);
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to generate cards");
+        addError({ msg: "Failed to generate cards", type: "danger" });
+        return;
       }
 
       const generatedCards = await response.json();
@@ -61,6 +63,7 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
               id="number"
               value={number}
               min="1"
+              max="10"
               onChange={(e) => setNumber(e.target.value)}
               required
             />
