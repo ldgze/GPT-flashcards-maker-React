@@ -57,7 +57,7 @@ export default function Dashboard() {
       try {
         const res = await fetch("/api/cards/count");
         if (res.status !== 200) {
-          addError({ msg: "Error fetching total cards", type: "danger" });
+          // addError({ msg: "Error fetching total cards", type: "danger" });
           return;
         }
         const totalCards = await res.json();
