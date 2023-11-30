@@ -32,6 +32,26 @@ router.get("/api/cards", async (req, res) => {
   }
 });
 
+router.get("/api/cards/count", async (req, res) => {
+  if (req.user) {
+    const username = req.user.username;
+
+    try {
+      const cardsNumber = await myDB.getCardsNumberByUsername(username);
+
+      res.status(200).json(cardsNumber);
+    } catch (error) {
+      console.error("Error fetching user's cards number:", error);
+
+      res
+        .status(500)
+        .send("An error occurred while fetching user's cards number");
+    }
+  } else {
+    return res.status(401).json({ message: "Not authorized" });
+  }
+});
+
 router.post("/api/cards/create", async (req, res) => {
   if (req.user) {
     const username = req.user.username;

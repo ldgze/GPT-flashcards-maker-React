@@ -5,15 +5,13 @@ import PropTypes from "prop-types";
 export function CardsGallery({
   cards,
   reloadCards,
-  currentPage,
-  setCurrentPage,
   setSortField,
   setSortOrder,
 }) {
   console.log("👏🏻 Render CardsGallery cards=", cards);
 
   const [editingCard, setEditingCard] = useState(null);
-  const { addError } = useContext(ErrorContext);
+  const { addError, clearErrors } = useContext(ErrorContext);
 
   const startEditing = (card) => {
     setEditingCard({ ...card });
@@ -145,15 +143,12 @@ export function CardsGallery({
     return cards.map(renderCard);
   }
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-    reloadCards();
-  };
-
   const handleSortChange = (field, order) => {
     setSortField(field);
     setSortOrder(order);
     reloadCards();
+    clearErrors();
+    addError({ msg: `Sorted by ${field} ${order}`, type: "info" });
   };
 
   return (
@@ -172,19 +167,6 @@ export function CardsGallery({
       </div>
 
       <div id="cards">{renderCards()}</div>
-
-      {/* Pagination UI */}
-      <div>
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <span>Page {currentPage}</span>
-        <button onClick={() => handlePageChange(currentPage + 1)}>Next</button>
-        {/* You might want to disable the Next button based on total page count */}
-      </div>
     </div>
   );
 }
@@ -200,6 +182,7 @@ CardsGallery.propTypes = {
   reloadCards: PropTypes.func.isRequired,
   setCurrentPage: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
   setSortField: PropTypes.func.isRequired,
   setSortOrder: PropTypes.func.isRequired,
 };

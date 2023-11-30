@@ -42,6 +42,21 @@ function MyDB() {
     }
   };
 
+  myDB.getCardsNumberByUsername = async (username) => {
+    const { client, db } = connect();
+    const cardsCollection = db.collection("cards");
+
+    try {
+      const queryObj = {
+        "user.username": username,
+      };
+      return await cardsCollection.countDocuments(queryObj);
+    } finally {
+      console.log("db closing connection");
+      client.close();
+    }
+  };
+
   myDB.insertCard = async (card, username) => {
     const { client, db } = connect();
     const cardsCollection = db.collection("cards");

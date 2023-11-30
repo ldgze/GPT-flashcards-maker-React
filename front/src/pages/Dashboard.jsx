@@ -4,6 +4,7 @@ import { ErrorContext } from "../main";
 import { CardsGallery } from "../components/CardsGallery";
 import BasePage from "./BasePage";
 import CreateCardForm from "../components/CreateCardForm"; // Import the new component
+import { PaginationControls } from "../components/PaginationControls";
 
 export default function Dashboard() {
   const [cards, setCards] = useState([]);
@@ -13,6 +14,7 @@ export default function Dashboard() {
   const pageSize = 10; // You can adjust this as needed
   const [sortField, setSortField] = useState("createdate");
   const [sortOrder, setSortOrder] = useState("desc"); // 'asc' for ascending
+  const [totalPages, setTotalPages] = useState(1);
 
   const reloadCards = useCallback(async () => {
     try {
@@ -50,7 +52,25 @@ export default function Dashboard() {
 
   useEffect(() => {
     reloadCards();
-  }, [reloadCards]);
+  }, [reloadCards, currentPage, sortField, sortOrder]);
+
+  useEffect(() => {
+    const fetchTotalPages = async () => {
+      try {
+        const res = await fetch("/api/cards/count");
+        if (res.status !== 200) {
+          addError({ msg: "Error fetching total cards", type: "danger" });
+          return;
+        }
+        const totalCards = await res.json();
+        setTotalPages(Math.ceil(totalCards / pageSize));
+      } catch (error) {
+        console.error(error);
+        addError({ msg: "Error occurred", type: "danger" });
+      }
+    };
+    fetchTotalPages();
+  }, [addError]);
 
   return (
     <BasePage>
@@ -61,8 +81,14 @@ export default function Dashboard() {
             reloadCards={reloadCards}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
             setSortField={setSortField}
             setSortOrder={setSortOrder}
+          />
+          <PaginationControls
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
           />
         </div>
         <div className="flex-shrink-0" style={{ width: "300px" }}>
