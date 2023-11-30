@@ -13,7 +13,7 @@ export default function Login() {
     document.body.style.color = "#fff";
 
     return () => {
-      document.body.style.backgroundColor = "";
+      document.body.style.backgroundColor = "#f5f5f5";
       document.body.style.color = "";
     };
   }, []);

@@ -15,7 +15,7 @@ export default function Register() {
 
     // Revert back to original style when the component unmounts
     return () => {
-      document.body.style.backgroundColor = ""; // Revert to original color
+      document.body.style.backgroundColor = "#f5f5f5"; // Revert to original color
       document.body.style.color = ""; // Revert text color
     };
   }, []);

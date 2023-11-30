@@ -15,8 +15,10 @@ export function SortingControls({ setSortField, setSortOrder }) {
   };
 
   const getButtonClass = (fieldOrder) => {
-    return `btn btn-outline-primary ${
-      activeSort === fieldOrder ? "active" : ""
+    return `btn ${
+      activeSort === fieldOrder
+        ? "btn-primary"
+        : "btn-outline-primary inactive-button"
     }`;
   };
 

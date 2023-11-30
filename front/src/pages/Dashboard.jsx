@@ -1,11 +1,10 @@
 import { useState, useEffect, useCallback, useContext } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import { ErrorContext } from "../main";
 import { CardsGallery } from "../components/CardsGallery";
 import BasePage from "./BasePage";
 import CreateCardForm from "../components/CreateCardForm";
-import GenerateCardsForm from "../components/GenerateCardsForm"; // Import the new component
-import { PaginationControls } from "../components/PaginationControls";
+import GenerateCardsForm from "../components/GenerateCardsForm";
 
 export default function Dashboard() {
   const [cards, setCards] = useState([]);
@@ -79,8 +78,6 @@ export default function Dashboard() {
             reloadCards={reloadCards}
             setSortField={setSortField}
             setSortOrder={setSortOrder}
-          />
-          <PaginationControls
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             totalPages={totalPages}

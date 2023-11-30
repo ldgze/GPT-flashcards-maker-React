@@ -2,12 +2,16 @@ import { useState, useContext } from "react";
 import { ErrorContext } from "../main";
 import PropTypes from "prop-types";
 import { SortingControls } from "./SortingControls";
+import { PaginationControls } from "./PaginationControls";
 
 export function CardsGallery({
   cards,
   reloadCards,
   setSortField,
   setSortOrder,
+  currentPage,
+  setCurrentPage,
+  totalPages,
 }) {
   console.log("👏🏻 Render CardsGallery cards=", cards);
 
@@ -148,11 +152,20 @@ export function CardsGallery({
     <div className="cards-gallery">
       <h2>My Flashcards</h2>
 
-      {/* SortingControls */}
-      <SortingControls
-        setSortField={setSortField}
-        setSortOrder={setSortOrder}
-      />
+      <div className="d-flex sticky-controls justify-content-between align-items-center mb-3">
+        {/* SortingControls */}
+        <SortingControls
+          setSortField={setSortField}
+          setSortOrder={setSortOrder}
+        />
+
+        {/* PaginationControls */}
+        <PaginationControls
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={totalPages}
+        />
+      </div>
 
       <div id="cards">{renderCards()}</div>
     </div>
@@ -170,4 +183,7 @@ CardsGallery.propTypes = {
   reloadCards: PropTypes.func.isRequired,
   setSortField: PropTypes.func.isRequired,
   setSortOrder: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
+  totalPages: PropTypes.number.isRequired,
 };
