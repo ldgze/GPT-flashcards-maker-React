@@ -13,6 +13,20 @@ function MyDB() {
     return { client, db };
   };
 
+  myDB.getAllCardsByUsername = async (username) => {
+    const { client, db } = connect();
+    const cardsCollection = db.collection("cards");
+
+    try {
+      return await cardsCollection
+        .find({ "user.username": username })
+        .toArray();
+    } finally {
+      console.log("db closing connection");
+      client.close();
+    }
+  };
+
   myDB.getCardsByUsername = async (
     username,
     page = 1,

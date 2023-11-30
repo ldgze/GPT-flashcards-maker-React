@@ -34,6 +34,34 @@ export function NavBar() {
     }
   };
 
+  const handleExportCards = async () => {
+    try {
+      const res = await fetch("/api/cards?exportAll=true");
+      if (res.status !== 200) {
+        addError({ msg: "Error loading cards", type: "danger" });
+        return;
+      }
+      const cards = await res.json();
+
+      const sanitizedCards = cards.map(({ question, answer }) => ({
+        question,
+        answer,
+      }));
+      const jsonData = JSON.stringify(sanitizedCards, null, 2);
+      const blob = new Blob([jsonData], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "flashcards.json";
+      a.click();
+      URL.revokeObjectURL(url); // Clean up to avoid memory leaks
+      addError({ msg: "Cards exported successfully", type: "success" });
+    } catch (error) {
+      console.error("Error exporting cards:", error);
+      addError({ msg: "Error exporting cards", type: "danger" });
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container">
@@ -54,9 +82,13 @@ export function NavBar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/export-cards" className="nav-link" id="export-cards">
+              <button
+                className="nav-link btn btn-link"
+                onClick={handleExportCards}
+                id="export-cards"
+              >
                 Export All Cards
-              </Link>
+              </button>
             </li>
             <li className="nav-item">
               <button

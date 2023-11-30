@@ -5,26 +5,35 @@ let router = express.Router();
 router.get("/api/cards", async (req, res) => {
   if (req.user) {
     const username = req.user.username;
-
-    // Extract query parameters
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
-    const sortBy = req.query.sortBy || "createdate";
-    const order = req.query.order || "desc";
+    const exportAll = req.query.exportAll === "true";
 
     try {
-      const cards = await myDB.getCardsByUsername(
-        username,
-        page,
-        limit,
-        sortBy,
-        order,
-      );
+      let cards = [];
 
+      if (exportAll) {
+        // Fetch all cards without pagination
+        cards = await myDB.getAllCardsByUsername(username);
+      } else {
+        // Extract query parameters for pagination
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const sortBy = req.query.sortBy || "createdate";
+        const order = req.query.order || "desc";
+
+        // Fetch cards with pagination
+        cards = await myDB.getCardsByUsername(
+          username,
+          page,
+          limit,
+          sortBy,
+          order,
+        );
+      }
+
+      // Send the cards in the response
       res.status(200).json(cards);
     } catch (error) {
       console.error("Error fetching user's cards:", error);
-
       res.status(500).send("An error occurred while fetching user's cards");
     }
   } else {
