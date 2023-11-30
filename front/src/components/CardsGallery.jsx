@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { ErrorContext } from "../main";
 import PropTypes from "prop-types";
+import { SortingControls } from "./SortingControls";
 
 export function CardsGallery({
   cards,
@@ -11,7 +12,7 @@ export function CardsGallery({
   console.log("👏🏻 Render CardsGallery cards=", cards);
 
   const [editingCard, setEditingCard] = useState(null);
-  const { addError, clearErrors } = useContext(ErrorContext);
+  const { addError } = useContext(ErrorContext);
 
   const startEditing = (card) => {
     setEditingCard({ ...card });
@@ -143,28 +144,15 @@ export function CardsGallery({
     return cards.map(renderCard);
   }
 
-  const handleSortChange = (field, order) => {
-    setSortField(field);
-    setSortOrder(order);
-    reloadCards();
-    clearErrors();
-    addError({ msg: `Sorted by ${field} ${order}`, type: "info" });
-  };
-
   return (
     <div className="cards-gallery">
       <h2>My Flashcards</h2>
 
-      {/* Sorting UI */}
-      <div>
-        <button onClick={() => handleSortChange("createdate", "asc")}>
-          Sort by Date Asc
-        </button>
-        <button onClick={() => handleSortChange("createdate", "desc")}>
-          Sort by Date Desc
-        </button>
-        {/* Add more sorting options as needed */}
-      </div>
+      {/* SortingControls */}
+      <SortingControls
+        setSortField={setSortField}
+        setSortOrder={setSortOrder}
+      />
 
       <div id="cards">{renderCards()}</div>
     </div>
@@ -180,9 +168,6 @@ CardsGallery.propTypes = {
     }),
   ),
   reloadCards: PropTypes.func.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  totalPages: PropTypes.number.isRequired,
   setSortField: PropTypes.func.isRequired,
   setSortOrder: PropTypes.func.isRequired,
 };

@@ -79,9 +79,6 @@ export default function Dashboard() {
           <CardsGallery
             cards={cards}
             reloadCards={reloadCards}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalPages={totalPages}
             setSortField={setSortField}
             setSortOrder={setSortOrder}
           />
