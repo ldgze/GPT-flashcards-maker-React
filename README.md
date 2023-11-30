@@ -89,16 +89,14 @@ To run this project locally, follow these steps:
 
 9. Install front-end project dependencies using npm:
 
-```bash
-$ npm install
-```
+   ```bash
+   $ npm install
+   ```
 
 10. Build the front end react application:
     ```bash
     $ npm run build
     ```
-
-```
 
 You should now be able to access the app at [http://localhost:3000](http://localhost:3000)!
 
@@ -121,4 +119,7 @@ Bootstrap
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+```
+
 ```
