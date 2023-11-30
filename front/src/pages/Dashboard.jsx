@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { ErrorContext } from "../main";
 import { CardsGallery } from "../components/CardsGallery";
 import BasePage from "./BasePage";
-import CreateCardForm from "../components/CreateCardForm"; // Import the new component
+import CreateCardForm from "../components/CreateCardForm";
+import GenerateCardsForm from "../components/GenerateCardsForm"; // Import the new component
 import { PaginationControls } from "../components/PaginationControls";
 
 export default function Dashboard() {
@@ -46,9 +47,6 @@ export default function Dashboard() {
       addError({ msg: "Error occurred", type: "danger" });
     }
   }, [clearErrors, addError, navigate, currentPage, sortField, sortOrder]);
-  const handleCardCreated = () => {
-    reloadCards(); // Function to refresh the list of cards
-  };
 
   useEffect(() => {
     reloadCards();
@@ -88,10 +86,10 @@ export default function Dashboard() {
             totalPages={totalPages}
           />
         </div>
-        <div className="flex-shrink-0" style={{ width: "300px" }}>
-          {" "}
-          {/* Adjust width as needed */}
-          <CreateCardForm onCardCreated={handleCardCreated} />
+        <div className="flex-shrink-0 sticky-form" style={{ width: "300px" }}>
+          <CreateCardForm onCardCreated={reloadCards} />
+          <GenerateCardsForm onCardsGenerated={reloadCards} />{" "}
+          {/* Add the GenerateCardsForm here */}
         </div>
       </div>
     </BasePage>

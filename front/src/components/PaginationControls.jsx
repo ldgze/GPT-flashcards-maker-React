@@ -17,7 +17,7 @@ export const PaginationControls = ({
 
   return (
     <nav>
-      <ul className="pagination">
+      <ul className="pagination justify-content-center">
         {currentPage > 1 && (
           <>
             <li className="page-item">

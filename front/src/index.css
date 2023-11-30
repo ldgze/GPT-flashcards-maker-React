@@ -143,3 +143,9 @@ body {
 .btn-primary {
   background-color: #007bff;
 }
+
+.sticky-form {
+  position: sticky;
+  top: 45px; /* Adjust this value based on your navbar's height */
+  align-self: start; /* This ensures it aligns to the top of the container */
+}
