@@ -1,30 +1,39 @@
 import PropTypes from "prop-types";
+import { useState, useContext } from "react";
 import { ErrorContext } from "../main";
-import { useContext } from "react";
+
 export function SortingControls({ setSortField, setSortOrder }) {
   const { addError, clearErrors } = useContext(ErrorContext);
+  const [activeSort, setActiveSort] = useState("");
 
   const handleSortChange = (field, order) => {
     setSortField(field);
     setSortOrder(order);
+    setActiveSort(`${field}-${order}`);
     clearErrors();
     addError({ msg: `Sorted by ${field} ${order}`, type: "info" });
+  };
+
+  const getButtonClass = (fieldOrder) => {
+    return `btn btn-outline-primary ${
+      activeSort === fieldOrder ? "active" : ""
+    }`;
   };
 
   return (
     <div className="sorting-controls mb-3">
       <div className="btn-group" role="group" aria-label="Sorting Options">
         <button
-          className="btn btn-outline-primary"
+          className={getButtonClass("createdate-asc")}
           onClick={() => handleSortChange("createdate", "asc")}
         >
-          Sort by Date Asc
+          Oldest to Newest
         </button>
         <button
-          className="btn btn-outline-primary"
+          className={getButtonClass("createdate-desc")}
           onClick={() => handleSortChange("createdate", "desc")}
         >
-          Sort by Date Desc
+          Newest to Oldest
         </button>
         {/* Add other sorting buttons/options here */}
       </div>
