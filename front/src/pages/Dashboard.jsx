@@ -16,6 +16,21 @@ export default function Dashboard() {
   const [sortOrder, setSortOrder] = useState("desc"); // 'asc' for ascending
   const [totalPages, setTotalPages] = useState(1);
 
+  // Use useCallback to memoize fetchTotalPages
+  const fetchTotalPages = useCallback(async () => {
+    try {
+      const res = await fetch("/api/cards/count");
+      if (res.status !== 200) {
+        return;
+      }
+      const totalCards = await res.json();
+      setTotalPages(Math.ceil(totalCards / pageSize));
+    } catch (error) {
+      console.error(error);
+      addError({ msg: "Error occurred", type: "danger" });
+    }
+  }, [addError, pageSize]); // Dependencies for useCallback
+
   const reloadCards = useCallback(async () => {
     try {
       const res = await fetch(
@@ -41,33 +56,30 @@ export default function Dashboard() {
       }
       const cardsData = await res.json();
       setCards(cardsData);
+      await fetchTotalPages();
     } catch (error) {
       console.error(error);
       addError({ msg: "Error occurred", type: "danger" });
     }
-  }, [clearErrors, addError, navigate, currentPage, sortField, sortOrder]);
+  }, [
+    clearErrors,
+    addError,
+    navigate,
+    currentPage,
+    sortField,
+    sortOrder,
+    pageSize,
+    fetchTotalPages,
+  ]);
 
   useEffect(() => {
     reloadCards();
   }, [reloadCards, currentPage, sortField, sortOrder]);
 
+  // useEffect to update totalPages when cards array changes
   useEffect(() => {
-    const fetchTotalPages = async () => {
-      try {
-        const res = await fetch("/api/cards/count");
-        if (res.status !== 200) {
-          // addError({ msg: "Error fetching total cards", type: "danger" });
-          return;
-        }
-        const totalCards = await res.json();
-        setTotalPages(Math.ceil(totalCards / pageSize));
-      } catch (error) {
-        console.error(error);
-        addError({ msg: "Error occurred", type: "danger" });
-      }
-    };
     fetchTotalPages();
-  }, [addError]);
+  }, [cards, addError, pageSize, fetchTotalPages]); // Dependency array includes 'cards'
 
   return (
     <BasePage>
