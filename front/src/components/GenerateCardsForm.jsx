@@ -50,6 +50,7 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
               className="form-control"
               value={text}
               onChange={(e) => setText(e.target.value)}
+              placeholder="Enter the text you want to use for generating flashcards."
               required
             />
           </div>
@@ -65,6 +66,7 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
               min="1"
               max="10"
               onChange={(e) => setNumber(e.target.value)}
+              placeholder="Choose how many cards to generate (1-10)."
               required
             />
           </div>
@@ -78,5 +80,5 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
 }
 
 GenerateCardsForm.propTypes = {
-  onCardsGenerated: PropTypes.func.isRequired, // Define the prop type
+  onCardsGenerated: PropTypes.func.isRequired,
 };
