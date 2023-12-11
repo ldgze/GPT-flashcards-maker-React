@@ -1,0 +1,19 @@
+.error-message-wrapper {
+  position: fixed;
+  top: 10%; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050; /* To overlay above other elements */
+  width: 80%; /* Adjust as needed */
+  max-width: 600px; /* Maximum width */
+  animation: fadeIn 0.5s; /* Optional animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

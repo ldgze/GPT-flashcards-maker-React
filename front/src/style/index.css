@@ -75,26 +75,6 @@ body {
   padding-bottom: 56px; /* Adjust based on the height of your footer */
 }
 
-.error-message-wrapper {
-  position: fixed;
-  top: 10%; /* Adjust as needed */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1050; /* To overlay above other elements */
-  width: 80%; /* Adjust as needed */
-  max-width: 600px; /* Maximum width */
-  animation: fadeIn 0.5s; /* Optional animation */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .card {
   margin-bottom: 20px;
   transition: box-shadow 0.3s;
@@ -141,15 +121,6 @@ body {
   position: sticky;
   top: 45px; /* Adjust this value based on your navbar's height */
   align-self: start; /* This ensures it aligns to the top of the container */
-}
-
-.sticky-controls {
-  position: sticky;
-  top: 50px; /* Adjust this value as needed */
-  z-index: 1000; /* To ensure it stays on top of other content */
-  padding: 10px; /* Optional for spacing */
-  background-color: transparent;
-  border-radius: 10px;
 }
 
 .inactive-button {

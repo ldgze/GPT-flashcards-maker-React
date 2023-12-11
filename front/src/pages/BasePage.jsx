@@ -7,6 +7,7 @@ import { NavBar } from "../layout/NavBar";
 import { Footer } from "../layout/Footer";
 
 import { ErrorContext } from "../main";
+import "../style/BasePage.css";
 
 export default function BasePage({ children }) {
   const { errors, removeError } = useContext(ErrorContext);

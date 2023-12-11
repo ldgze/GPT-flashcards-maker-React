@@ -2,6 +2,7 @@ import { useRef, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BasePage from "./BasePage";
 import { ErrorContext } from "../main";
+import "../style/Register.css";
 
 export default function Register() {
   const registerFormRef = useRef(null);
@@ -9,14 +10,10 @@ export default function Register() {
   const { addError } = useContext(ErrorContext);
 
   useEffect(() => {
-    // Apply the dark background when the component mounts
-    document.body.style.backgroundColor = "#343a40"; // Set to your preferred dark color
-    document.body.style.color = "#fff"; // Adjust text color for readability
+    document.body.classList.add("register-page-body");
 
-    // Revert back to original style when the component unmounts
     return () => {
-      document.body.style.backgroundColor = "#f5f5f5"; // Revert to original color
-      document.body.style.color = ""; // Revert text color
+      document.body.classList.remove("register-page-body");
     };
   }, []);
 
@@ -44,7 +41,7 @@ export default function Register() {
   return (
     <BasePage>
       <div className="container py-5">
-        <h1 className="text-center mb-5" style={{ color: "#fff" }}>
+        <h1 className="text-center mb-5 register-title">
           GPT Flashcards Maker - Register
         </h1>
         <div className="row justify-content-center">

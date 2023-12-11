@@ -3,6 +3,7 @@ import { ErrorContext } from "../main";
 import PropTypes from "prop-types";
 import { SortingControls } from "./SortingControls";
 import { PaginationControls } from "./PaginationControls";
+import "../style/CardsGallery.css";
 
 export function CardsGallery({
   cards,

@@ -2,6 +2,7 @@ import { useRef, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import BasePage from "./BasePage";
 import { ErrorContext } from "../main";
+import "../style/Login.css";
 
 export default function Login() {
   const loginFormRef = useRef(null);
@@ -9,12 +10,10 @@ export default function Login() {
   const { addError, clearErrors } = useContext(ErrorContext);
 
   useEffect(() => {
-    document.body.style.backgroundColor = "#343a40";
-    document.body.style.color = "#fff";
+    document.body.classList.add("login-page-body");
 
     return () => {
-      document.body.style.backgroundColor = "#f5f5f5";
-      document.body.style.color = "";
+      document.body.classList.remove("login-page-body");
     };
   }, []);
 
@@ -43,9 +42,7 @@ export default function Login() {
   return (
     <BasePage>
       <div className="container py-5">
-        <h1 className="text-center mb-5" style={{ color: "#fff" }}>
-          GPT Flashcards Maker
-        </h1>
+        <h1 className="text-center mb-5 login-title">GPT Flashcards Maker</h1>
         <div className="row justify-content-center">
           <div className="col-md-6">
             <div className="card">

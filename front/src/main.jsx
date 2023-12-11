@@ -2,7 +2,7 @@ import React, { useState, useCallback, createContext } from "react";
 import ReactDOM from "react-dom/client";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import "./index.css";
+import "./style/index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./pages/Dashboard.jsx";
