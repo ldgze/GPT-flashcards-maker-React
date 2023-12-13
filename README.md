@@ -1,15 +1,20 @@
 # GPT-flashcards-maker-React
 
 Welcome to GPT FlashCards Maker, a web application designed to simplify the creation of flashcards using the OpenAI GPT API. This project is built using React, Express and MongoDB, allowing you to create and manage flashcards with ease.
-![Screenshot](./front/public/dashboard.png)
+![Screenshot](./front/public/dashboard.gif)
 
 ## Table of Contents
 
 - [GPT-flashcards-maker-React](#gpt-flashcards-maker-react)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
-  - [Design Document](#design-document)
   - [Features](#features)
+  - [Final Project Update Features](#final-project-update-features)
+  - [Design Document](#design-document)
+  - [Color Palette](#color-palette)
+  - [Typography Matching](#typography-matching)
+  - [Usability Report](#usability-report)
+  - [Accessibility Tests](#accessibility-tests)
   - [Demo](#demo)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -20,10 +25,6 @@ Welcome to GPT FlashCards Maker, a web application designed to simplify the crea
 
 GPT FlashCards Maker React is a powerful tool for creating flashcards. It leverages the OpenAI GPT API to make the flashcard creation process more efficient and user-friendly. Whether you're a student or a professional, this application will help you generate and organize flashcards for effective learning. This is also the first project of [CS5610 Web Development course](https://johnguerra.co/classes/webDevelopment_fall_2023/) at Northeastern University.
 
-## Design Document
-
-See the [Design Document](./deisgn-document.md) file for details.
-
 ## Features
 
 - **Flashcard Creation**: Quickly generate flashcards with questions and answers.
@@ -31,6 +32,48 @@ See the [Design Document](./deisgn-document.md) file for details.
 - **OpenAI GPT Integration**: Utilizes the OpenAI GPT API for generating flashcards from text.
 - **Export**: Download your flashcards for offline use or sharing with others.
 - **Responsive Design**: Access your flashcards from any device with a responsive web interface.
+
+## Final Project Update Features
+
+- **Auto-Disappearing Error Messages**: Enhanced error messaging improves user experience. Error alerts now automatically vanish after a few seconds, preventing them from obstructing the view and ensuring a cleaner interface.
+- **Operation-Dependent Button Disabling**: To improve user interaction, buttons for creating and generating cards are now disabled during processing. This change prevents multiple submissions and clearly indicates when an operation is in progress, enhancing usability.
+- **Expanded Export Functionality**: Users now have more flexibility with the export feature. In addition to JSON, the system supports exporting cards in CSV format. This addition caters to different user needs and preferences, making data handling more versatile.
+- **Redesigned Website Interface**: The website has undergone a comprehensive redesign. This update includes a new color palette and typography choices, aiming for a more visually appealing and accessible user experience. Minor improvements have also been made across the platform to enhance overall usability and accessibility.
+
+## Design Document
+
+See the [Design Document](./deisgn-document.md) file for details.
+
+## Color Palette
+
+The GPT Flashcards Maker employs a distinctive color palette:
+
+- Success: #8a8834 - A greenish hue for positive feedback.
+- Danger: #8a3435 - A reddish hue for warnings and errors.
+- Primary: #34698a - A calming blueish hue for main elements.
+- NavBar & Footer: #262f35 - Dark gray for contrast and modern look.
+- Card Background: #ffffe0 - Cream color for readability and warmth.
+
+These colors enhance the application's aesthetics and user experience.
+
+## Typography Matching
+
+GPT Flashcards Maker employs two fonts for a blend of clarity and elegance:
+
+- [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans): A geometric sans-serif font providing clarity and modern simplicity for body text and navigation.
+- [Yeseva One](https://fonts.google.com/specimen/Yeseva+One): A stylish serif font used for headings and titles, adding elegance and distinctiveness.
+  This mix ensures readability while enhancing the visual appeal of the site.
+
+## Usability Report
+
+The usability of GPT Flashcards Maker has been thoroughly evaluated. For the complete analysis, refer to the [Usability Report](https://docs.google.com/document/d/1v2r-lXetH0ebWcA2A4lWNdP5FflcLiQQa0oZsX8DClk/edit?usp=sharing).
+
+## Accessibility Tests
+
+1. lighthouse
+   ![Screenshot](./front/public/lighthouse.png)
+2. axe DevTools
+   ![Screenshot](./front/public/axe DevTools.png)
 
 ## Demo
 
