@@ -1,7 +1,7 @@
 /* Pagination Controls Styling */
 .pagination .page-link {
-  background-color: transparent; /* Transparent background */
-  color: #346889; /* Consistent text color */
+  background-color: #f2f2f2; /* Transparent background */
+  color: black; /* Consistent text color */
   border: 1px solid #346889; /* Border color */
   padding: 0.6em 1.2em; /* Padding similar to buttons */
   border-radius: 0.25em; /* Rounded corners */
@@ -18,7 +18,7 @@
     137,
     0.3
   ); /* Darker and more visible background on hover */
-  color: white; /* Text color change for better visibility */
+  color: black; /* Text color change for better visibility */
   border-color: #2b5877; /* Border color on hover */
 }
 

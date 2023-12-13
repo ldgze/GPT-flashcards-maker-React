@@ -5,6 +5,9 @@
   --color-primary: #34698a;
   --color-navBar-footer: #262f35;
   --color-card-bg: #ffffe0;
+  --color-success-light: hsl(66, 29%, 45%); /* Lighter version of #8a8834 */
+  --color-danger-light: hsl(358, 29%, 45%); /* Lighter version of #8a3435 */
+  --color-primary-light: hsl(204, 29%, 45%); /* Lighter version of #34698a */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

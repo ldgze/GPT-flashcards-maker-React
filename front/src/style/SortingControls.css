@@ -3,12 +3,14 @@
   background-color: #346889; /* Active background color */
   color: white; /* Text color for active button */
   border-color: #346889; /* Border color for active button */
+  border-color: #346889; /* Active button border color */
+  box-shadow: 0 0 0 0.2rem rgba(52, 105, 138, 0.5); /* Box shadow for active state */
 }
 
 /* Inactive Button Style */
 .btn-inactive {
-  background-color: transparent; /* Inactive background color */
-  color: #346889; /* Text color for inactive buttons */
+  background-color: #f2f2f2; /* Inactive background color */
+  color: black; /* Text color for inactive buttons */
   border-color: #346889; /* Border color for inactive buttons */
 }
 

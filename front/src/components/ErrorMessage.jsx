@@ -1,6 +1,21 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import "../style/ErrorMessage.css";
 
 export function ErrorMessage({ children, type = "warning", onClose }) {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false);
+      if (onClose) onClose();
+    }, 2000); // Message disappears after 5000 milliseconds (5 seconds)
+
+    return () => clearTimeout(timer); // Clear the timer if the component unmounts
+  }, [onClose]);
+
+  if (!visible) return null;
+
   return (
     <div
       className={`alert alert-${type} alert-dismissible fade show`}
@@ -18,10 +33,7 @@ export function ErrorMessage({ children, type = "warning", onClose }) {
 }
 
 ErrorMessage.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   type: PropTypes.string,
   onClose: PropTypes.func,
 };
