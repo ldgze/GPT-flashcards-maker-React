@@ -1,0 +1,13 @@
+/* Base styles for forms */
+.sticky-form {
+  width: 300px; /* Default width */
+  /* Other styles... */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .sticky-form {
+    width: auto; /* Adjusts to the width of the container */
+    max-width: 600px; /* Limits the maximum width */
+  }
+}

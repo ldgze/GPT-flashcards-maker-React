@@ -15,33 +15,24 @@ export function SortingControls({
     {
       field: "createdate",
       order: "asc",
-      emoji: "⬆️",
+      symbol: "↑",
       tooltip: "Sort Oldest to Newest",
     },
     {
       field: "createdate",
       order: "desc",
-      emoji: "⬇️",
+      symbol: "↓",
       tooltip: "Sort Newest to Oldest",
     },
     // Add other sorting options here
   ];
 
   const handleSortChange = (option) => {
-    // Update the sorting fields and state first
     setSortField(option.field);
     setSortOrder(option.order);
     setActiveSort(`${option.field}-${option.order}`);
-
-    // Clear any previous errors
     clearErrors();
-
-    setIsSortOperation(true); // Indicate that a sort operation has started
-  };
-
-  const getButtonClass = (option) => {
-    const fieldOrder = `${option.field}-${option.order}`;
-    return `btn ${activeSort === fieldOrder ? "btn-active" : "btn-inactive"}`;
+    setIsSortOperation(true);
   };
 
   return (
@@ -50,11 +41,15 @@ export function SortingControls({
         {sortOptions.map((option) => (
           <button
             key={`${option.field}-${option.order}`}
-            className={getButtonClass(option)}
+            className={`btn ${
+              activeSort === `${option.field}-${option.order}`
+                ? "btn-active"
+                : "btn-inactive"
+            }`}
             onClick={() => handleSortChange(option)}
-            title={option.tooltip} // Adding the tooltip here
+            title={option.tooltip}
           >
-            {option.emoji}
+            {option.symbol}
           </button>
         ))}
       </div>

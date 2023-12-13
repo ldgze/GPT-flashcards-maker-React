@@ -6,7 +6,7 @@ export const PaginationControls = ({
   setCurrentPage,
   totalPages,
 }) => {
-  const maxPageButtons = 5; // Max number of page buttons to display
+  const maxPageButtons = 3; // Max number of page buttons to display
 
   const startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
   const endPage = Math.min(totalPages, startPage + maxPageButtons - 1);

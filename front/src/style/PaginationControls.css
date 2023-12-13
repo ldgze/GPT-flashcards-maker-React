@@ -1,26 +1,20 @@
 /* Pagination Controls Styling */
 .pagination .page-link {
-  background-color: #f2f2f2; /* Transparent background */
+  background-color: #f2f2f2; /* Light background */
   color: black; /* Consistent text color */
   border: 1px solid #346889; /* Border color */
-  padding: 0.6em 1.2em; /* Padding similar to buttons */
+  padding: 0.4em 0.8em; /* Reduced padding */
   border-radius: 0.25em; /* Rounded corners */
   transition:
     background-color 0.2s,
     border-color 0.2s,
     box-shadow 0.2s; /* Smooth transitions */
-  font:
-    1.2em "Josefin Sans",
-    sans-serif; /* Larger font size */
+  font-size: 0.9em; /* Reduced font size */
+  font-family: "Josefin Sans", sans-serif; /* Maintain font family */
 }
 
 .pagination .page-link:hover {
-  background-color: rgba(
-    52,
-    104,
-    137,
-    0.3
-  ); /* Darker and more visible background on hover */
+  background-color: rgba(52, 104, 137, 0.3); /* Darker background on hover */
   color: black; /* Text color change for better visibility */
   border-color: #2b5877; /* Border color on hover */
 }

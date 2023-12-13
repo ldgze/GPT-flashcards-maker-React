@@ -4,29 +4,34 @@
   padding: 1em; /* Adequate padding */
   margin-bottom: 1em; /* Space below the alert */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: "Josefin Sans", sans-serif; /* Consistent font family */
+  font-size: 1em; /* Standard font size */
+  line-height: 1.5; /* Adequate line spacing */
 }
 
 .alert-success {
   background-color: var(--color-success-light);
   color: white;
-  border: 2px solid darken(var(--color-success-light), 10%); /* Slightly darker border */
+  border-color: darken(
+    var(--color-success-light),
+    10%
+  ); /* Slightly darker border */
 }
 
 .alert-danger {
   background-color: var(--color-danger-light);
   color: white;
-  border: 2px solid darken(var(--color-danger-light), 10%);
+  border-color: darken(var(--color-danger-light), 10%);
 }
 
 .alert-info {
   background-color: var(--color-primary-light);
   color: white;
-  border: 2px solid darken(var(--color-primary-light), 10%);
+  border-color: darken(var(--color-primary-light), 10%);
 }
-
-/* Continue with other styles */
 
 /* Styles for the close button */
 .btn-close {
   color: white;
+  filter: invert(1); /* Invert color for visibility on light backgrounds */
 }

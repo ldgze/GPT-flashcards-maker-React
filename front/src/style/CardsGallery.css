@@ -1,8 +1,47 @@
+/* CardsGallery.css */
+
+.cards-gallery {
+  /* Other styles... */
+  max-width: 100%;
+}
+
 .sticky-controls {
   position: sticky;
-  top: 60px; /* Adjust this value as needed */
-  z-index: 1000; /* To ensure it stays on top of other content */
-  padding: 10px; /* Optional for spacing */
-  background-color: transparent;
-  border-radius: 10px;
+  top: 70px; /* Adjust this value based on your layout */
+  z-index: 1000; /* To ensure it stays on top of other elements */
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  margin-bottom: 1em;
+}
+
+/* Adjust the media query as needed for your layout */
+@media (max-width: 768px) {
+  .sticky-controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pagination,
+  .sorting-controls {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* PaginationControls.css */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* Other styles... */
+}
+
+.pagination .page-link {
+  /* Adjust sizes for smaller screens */
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
 }

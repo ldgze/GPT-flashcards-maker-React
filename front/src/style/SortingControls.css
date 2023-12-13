@@ -1,56 +1,35 @@
+/* Sorting Controls Styling */
+.sorting-controls .btn {
+  padding: 0.4em 0.8em; /* Adjust padding */
+  font-size: 0.9em; /* Adjust font size */
+  margin-right: 5px; /* Spacing between buttons */
+  border-radius: 0.25em; /* Rounded corners */
+}
+
 /* Active Button Style */
 .btn-active {
   background-color: #346889; /* Active background color */
-  color: white; /* Text color for active button */
-  border-color: #346889; /* Border color for active button */
-  border-color: #346889; /* Active button border color */
-  box-shadow: 0 0 0 0.2rem rgba(52, 105, 138, 0.5); /* Box shadow for active state */
+  color: white;
+  border-color: #346889;
+  box-shadow: 0 0 0 0.2rem rgba(52, 105, 138, 0.5);
 }
 
 /* Inactive Button Style */
 .btn-inactive {
-  background-color: #f2f2f2; /* Inactive background color */
-  color: black; /* Text color for inactive buttons */
-  border-color: #346889; /* Border color for inactive buttons */
+  background-color: #f2f2f2;
+  color: black;
+  border-color: #346889;
 }
 
-/* Hover state for both active and inactive buttons */
-.btn-active:hover,
-.btn-inactive:hover {
-  background-color: rgba(52, 104, 137, 0.2); /* Slightly darker for hover */
-  color: #fff; /* Optional: Change text color for better visibility */
-  border-color: #2b5877; /* Optional: Slightly darker border on hover */
+/* Hover State */
+.btn:hover {
+  background-color: rgba(52, 104, 137, 0.2);
+  color: white;
+  border-color: #2b5877;
 }
 
-/* Focus state for both active and inactive buttons */
-.btn-active:focus,
-.btn-inactive:focus {
-  background-color: rgba(
-    52,
-    104,
-    137,
-    0.1
-  ); /* Slightly visible background for focus */
-  color: #346889; /* Keeping text color consistent */
-  box-shadow: 0 0 0 0.2rem rgba(52, 104, 137, 0.25); /* Focus ring for accessibility */
-  outline: none; /* Remove default browser outline */
-}
-
-/* Outline Primary Button */
-.btn-outline-primary {
-  color: #346889; /* Text color */
-  border-color: #346889; /* Border color */
-  background-color: transparent; /* Background color */
-}
-
-/* Hover state for Outline Primary Button */
-.btn-outline-primary:hover {
-  background-color: rgba(
-    52,
-    104,
-    137,
-    0.2
-  ); /* Slightly visible background on hover */
-  color: #fff; /* Changing text color for better visibility */
-  border-color: #2b5877; /* Optionally change border color on hover */
+/* Focus State */
+.btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(52, 104, 137, 0.25);
+  outline: none;
 }

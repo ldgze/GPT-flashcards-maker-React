@@ -34,7 +34,7 @@ body {
 
 /* General Button Enhancements */
 .btn {
-  padding: 0.6em 1.2em; /* More padding for better button size */
+  padding: 0.5em 1em; /* More padding for better button size */
   font-size: 1em; /* Adjust font size as needed */
   font-weight: 500; /* Bolder font for better readability */
   font:

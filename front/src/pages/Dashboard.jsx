@@ -5,6 +5,7 @@ import { CardsGallery } from "../components/CardsGallery";
 import BasePage from "./BasePage";
 import CreateCardForm from "../components/CreateCardForm";
 import GenerateCardsForm from "../components/GenerateCardsForm";
+import "../style/Dashboard.css";
 
 export default function Dashboard() {
   const [cards, setCards] = useState([]);
@@ -102,7 +103,7 @@ export default function Dashboard() {
             totalPages={totalPages}
           />
         </div>
-        <div className="flex-shrink-0 sticky-form" style={{ width: "300px" }}>
+        <div className="flex-shrink-0 sticky-form">
           <CreateCardForm onCardCreated={reloadCards} />
           <GenerateCardsForm onCardsGenerated={reloadCards} />{" "}
           {/* Add the GenerateCardsForm here */}
