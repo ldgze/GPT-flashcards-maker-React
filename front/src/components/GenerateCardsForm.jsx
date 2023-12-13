@@ -6,9 +6,11 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
   const [text, setText] = useState("");
   const [number, setNumber] = useState(1);
   const { addError } = useContext(ErrorContext);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsGenerating(true); // Disable the button
 
     try {
       const response = await fetch("/api/cards/generate", {
@@ -33,6 +35,8 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
     } catch (error) {
       console.error("Error:", error);
       addError({ msg: error.message, type: "danger" });
+    } finally {
+      setIsGenerating(false); // Enable the button
     }
   };
 
@@ -70,8 +74,12 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Generate Cards
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={isGenerating}
+          >
+            {isGenerating ? "Generating..." : "Generate Cards"}
           </button>
         </form>
       </div>

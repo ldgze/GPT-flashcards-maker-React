@@ -6,9 +6,11 @@ export default function CreateCardForm({ onCardCreated }) {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const { addError } = useContext(ErrorContext);
+  const [isCreating, setIsCreating] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsCreating(true); // Disable the button
     // Call the API to create a new card
     try {
       const response = await fetch("/api/cards/create", {
@@ -28,6 +30,8 @@ export default function CreateCardForm({ onCardCreated }) {
       }
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setIsCreating(false); // Enable the button
     }
   };
 
@@ -64,8 +68,12 @@ export default function CreateCardForm({ onCardCreated }) {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Create Card
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={isCreating}
+          >
+            {isCreating ? "Creating..." : "Create Card"}
           </button>
         </form>
       </div>

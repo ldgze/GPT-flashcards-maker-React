@@ -6,13 +6,13 @@
 }
 
 .navbar-brand {
-  font-family: "Yeseva One", serif;
-  color: var(--color-card-bg);
+  font-family: "Josefin Sans", serif;
+  color: white;
   font-size: 1.5em;
 }
 
 .navbar-toggler {
-  border-color: var(--color-card-bg);
+  border-color: white;
 }
 
 .navbar-nav .nav-item {
@@ -23,7 +23,7 @@
 .navbar-nav .nav-link,
 .navbar-nav .btn-link {
   font-family: "Josefin Sans", sans-serif;
-  color: var(--color-card-bg);
+  color: white;
   padding: 0.5rem 1rem;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .navbar-nav .nav-item .dropdown-menu .dropdown-item {
-  color: var(--color-card-bg);
+  color: white;
   font-family: "Josefin Sans", sans-serif;
 }
 

@@ -92,6 +92,23 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(138, 52, 53, 0.5); /* Box shadow similar to focus */
 }
 
+/* Disabled Button Styles */
+.btn:disabled {
+  background-color: var(
+    --color-primary-light
+  ); /* Lighter shade for disabled state */
+  color: rgba(255, 255, 255, 0.7); /* Slightly transparent white for text */
+  border-color: var(--color-primary-light); /* Lighter border */
+  cursor: not-allowed; /* Cursor to indicate non-interactive element */
+}
+
+/* Optionally, you can also add styles for hover and focus states of disabled buttons */
+.btn:disabled:hover,
+.btn:disabled:focus {
+  background-color: var(--color-primary-light); /* Keep the same background */
+  box-shadow: none; /* No shadow on hover or focus */
+}
+
 h1 {
   line-height: 1.1;
   font:
@@ -154,14 +171,13 @@ h1 {
 }
 
 .footer {
-  background-color: var(--color-navBar-footer);
   font:
     1em "Josefin Sans",
     sans-serif;
 }
 
 .footer-text {
-  color: var(--color-card-bg);
+  color: white;
 }
 
 .create-card-form {
