@@ -32,9 +32,9 @@ export default function CreateCardForm({ onCardCreated }) {
   };
 
   return (
-    <div className="card my-4">
+    <div className="card my-4 create-card-form">
       <div className="card-body">
-        <h5 className="card-title">Create a New Card</h5>
+        <h2 className="card-title">Create a New Card</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="question" className="form-label">

@@ -1,4 +1,5 @@
 import propTypes from "prop-types";
+import "../style/PaginationControls.css";
 
 export const PaginationControls = ({
   currentPage,

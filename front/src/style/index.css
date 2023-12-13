@@ -1,12 +1,13 @@
 :root {
+  /* Color Theme */
+  --color-success: #8a8834;
+  --color-danger: #8a3435;
+  --color-primary: #34698a;
+  --color-navBar-footer: #262f35;
+  --color-card-bg: #ffffe0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,70 +15,83 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
-  flex-direction: column; /* Add this to align items vertically */
-  align-items: center; /* This will keep horizontal centering */
-  justify-content: flex-start; /* Aligns content to the start (top) */
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   min-width: 320px;
   min-height: 100vh;
+  padding-top: 60px;
+  padding-bottom: 70px; /* Adjust based on your footer height */
+}
+
+/* General Button Enhancements */
+.btn {
+  padding: 0.6em 1.2em; /* More padding for better button size */
+  font-size: 1em; /* Adjust font size as needed */
+  font-weight: 500; /* Bolder font for better readability */
+  border-radius: 0.25em; /* Rounded corners for a modern look */
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s; /* Smooth transition for hover and focus states */
+  text-align: center; /* Ensure text is centered */
+  vertical-align: middle; /* Align text vertically */
+  cursor: pointer; /* Cursor pointer to indicate button */
+}
+
+/* Success Button */
+.btn-success {
+  background-color: var(--color-success); /* Use variable */
+  color: white;
+  border-color: var(--color-success);
+}
+.btn.btn-success:hover,
+.btn.btn-success:focus,
+.btn.btn-success:active {
+  background-color: #7a7a30; /* Slightly darker for hover/focus/active */
+  border-color: #7a7a30; /* Consistent border color for hover/focus/active */
+  box-shadow: 0 0 0 0.2rem rgba(138, 136, 52, 0.5); /* Box shadow similar to focus */
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--color-primary); /* Use variable */
+  color: white;
+  border-color: var(--color-primary);
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:focus,
+.btn.btn-primary:active {
+  background-color: #2b5877; /* Slightly darker for hover/focus/active */
+  border-color: #2b5877; /* Consistent border color for hover/focus/active */
+  box-shadow: 0 0 0 0.2rem rgba(52, 105, 138, 0.5); /* Box shadow similar to focus */
+}
+
+/* Danger Button */
+.btn-danger {
+  background-color: var(--color-danger); /* Use variable */
+  color: white;
+  border-color: var(--color-danger);
+}
+.btn.btn-danger:hover,
+.btn.btn-danger:focus,
+.btn.btn-danger:active {
+  background-color: #7a3031; /* Slightly darker for hover/focus/active */
+  border-color: #7a3031; /* Consistent border color for hover/focus/active */
+  box-shadow: 0 0 0 0.2rem rgba(138, 52, 53, 0.5); /* Box shadow similar to focus */
 }
 
 h1 {
-  font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-body {
-  padding-top: 60px; /* Adjust based on the height of your navbar */
-  padding-bottom: 56px; /* Adjust based on the height of your footer */
 }
 
 .card {
   margin-bottom: 20px;
   transition: box-shadow 0.3s;
+  background-color: var(--color-card-bg);
 }
 
 .card:hover {
@@ -101,28 +115,28 @@ body {
   border-radius: 5px;
 }
 
-.btn-group button {
-  margin-right: 5px;
+.footer {
+  background-color: var(--color-navBar-footer);
 }
 
-.btn-success {
-  background-color: #28a745;
+.navBar {
+  background-color: var(--color-navBar-footer);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
-.btn-danger {
-  background-color: #dc3545;
+.create-card-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
 }
 
-.btn-primary {
-  background-color: #007bff;
-}
-
-.sticky-form {
-  position: sticky;
-  top: 45px; /* Adjust this value based on your navbar's height */
-  align-self: start; /* This ensures it aligns to the top of the container */
-}
-
-.inactive-button {
-  background-color: white;
+.generate-cards-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
 }

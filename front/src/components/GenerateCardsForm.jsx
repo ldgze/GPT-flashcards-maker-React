@@ -37,9 +37,9 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
   };
 
   return (
-    <div className="card my-4">
+    <div className="card my-4 generate-cards-form">
       <div className="card-body">
-        <h5 className="card-title">Generate New Cards</h5>
+        <h2 className="card-title">Generate New Cards</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="text" className="form-label">

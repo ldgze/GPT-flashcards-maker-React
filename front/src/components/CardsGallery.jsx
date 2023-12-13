@@ -10,6 +10,7 @@ export function CardsGallery({
   reloadCards,
   setSortField,
   setSortOrder,
+  setIsSortOperation,
   currentPage,
   setCurrentPage,
   totalPages,
@@ -95,7 +96,7 @@ export function CardsGallery({
       return (
         <div className="card mb-3" key={card._id}>
           <div className="card-body">
-            <h5 className="card-title">Question</h5>
+            <h2 className="card-title">Question</h2>
             {isEditing ? (
               <input
                 type="text"
@@ -108,7 +109,7 @@ export function CardsGallery({
                 {card.question}
               </p>
             )}
-            <h5 className="card-title">Answer</h5>
+            <h2 className="card-title">Answer</h2>
             {isEditing ? (
               <input
                 type="text"
@@ -151,13 +152,14 @@ export function CardsGallery({
 
   return (
     <div className="cards-gallery">
-      <h2>My Flashcards</h2>
+      <h1>My Flashcards</h1>
 
       <div className="d-flex sticky-controls justify-content-between align-items-center mb-3">
         {/* SortingControls */}
         <SortingControls
           setSortField={setSortField}
           setSortOrder={setSortOrder}
+          setIsSortOperation={setIsSortOperation}
         />
 
         {/* PaginationControls */}
@@ -184,6 +186,7 @@ CardsGallery.propTypes = {
   reloadCards: PropTypes.func.isRequired,
   setSortField: PropTypes.func.isRequired,
   setSortOrder: PropTypes.func.isRequired,
+  setIsSortOperation: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
   setCurrentPage: PropTypes.func.isRequired,
   totalPages: PropTypes.number.isRequired,

@@ -1,6 +1,6 @@
 .sticky-controls {
   position: sticky;
-  top: 50px; /* Adjust this value as needed */
+  top: 60px; /* Adjust this value as needed */
   z-index: 1000; /* To ensure it stays on top of other content */
   padding: 10px; /* Optional for spacing */
   background-color: transparent;

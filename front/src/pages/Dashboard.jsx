@@ -15,6 +15,7 @@ export default function Dashboard() {
   const [sortField, setSortField] = useState("createdate");
   const [sortOrder, setSortOrder] = useState("desc"); // 'asc' for ascending
   const [totalPages, setTotalPages] = useState(1);
+  const [isSortOperation, setIsSortOperation] = useState(false);
 
   // Use useCallback to memoize fetchTotalPages
   const fetchTotalPages = useCallback(async () => {
@@ -57,6 +58,13 @@ export default function Dashboard() {
       const cardsData = await res.json();
       setCards(cardsData);
       await fetchTotalPages();
+      if (isSortOperation) {
+        addError({
+          msg: `Cards sorted by ${sortField} in ${sortOrder} order.`,
+          type: "info",
+        });
+        setIsSortOperation(false); // Reset the flag after showing the message
+      }
     } catch (error) {
       console.error(error);
       addError({ msg: "Error occurred", type: "danger" });
@@ -70,6 +78,7 @@ export default function Dashboard() {
     sortOrder,
     pageSize,
     fetchTotalPages,
+    isSortOperation,
   ]);
 
   useEffect(() => {
@@ -90,6 +99,7 @@ export default function Dashboard() {
             reloadCards={reloadCards}
             setSortField={setSortField}
             setSortOrder={setSortOrder}
+            setIsSortOperation={setIsSortOperation}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             totalPages={totalPages}

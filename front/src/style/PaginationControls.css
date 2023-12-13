@@ -1,0 +1,35 @@
+/* Pagination Controls Styling */
+.pagination .page-link {
+  background-color: transparent; /* Transparent background */
+  color: #346889; /* Consistent text color */
+  border: 1px solid #346889; /* Border color */
+  padding: 0.6em 1.2em; /* Padding similar to buttons */
+  border-radius: 0.25em; /* Rounded corners */
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s; /* Smooth transitions */
+}
+
+.pagination .page-link:hover {
+  background-color: rgba(
+    52,
+    104,
+    137,
+    0.3
+  ); /* Darker and more visible background on hover */
+  color: white; /* Text color change for better visibility */
+  border-color: #2b5877; /* Border color on hover */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #346889; /* Active button background color */
+  color: white; /* Active button text color */
+  border-color: #346889; /* Active button border color */
+  box-shadow: 0 0 0 0.2rem rgba(52, 105, 138, 0.5); /* Box shadow for active state */
+}
+
+.pagination .page-link:focus {
+  box-shadow: 0 0 0 0.2rem rgba(52, 104, 137, 0.25); /* Focus ring for accessibility */
+  outline: none; /* Remove default outline */
+}
