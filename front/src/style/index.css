@@ -160,25 +160,8 @@ h1 {
     sans-serif;
 }
 
-.navBar {
-  background-color: var(--color-navBar-footer);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  font:
-    1.2em "Josefin Sans",
-    sans-serif;
-}
-
-.navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  font:
-    1.2em "Josefin Sans",
-    sans-serif;
+.footer-text {
+  color: var(--color-card-bg);
 }
 
 .create-card-form {

@@ -1,10 +1,17 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorContext } from "../main";
+import "../style/NavBar.css";
 
 export function NavBar() {
   const navigate = useNavigate();
   const { addError, clearErrors } = useContext(ErrorContext);
+
+  function convertToCSV(cards) {
+    const header = Object.keys(cards[0]).join(",");
+    const rows = cards.map((card) => Object.values(card).join(",")).join("\n");
+    return `${header}\n${rows}`;
+  }
 
   const handleLogout = async () => {
     try {
@@ -30,7 +37,7 @@ export function NavBar() {
     }
   };
 
-  const handleExportCards = async () => {
+  const handleExportCards = async (format) => {
     try {
       const res = await fetch("/api/cards?exportAll=true");
       if (res.status !== 200) {
@@ -38,20 +45,32 @@ export function NavBar() {
         return;
       }
       const cards = await res.json();
-
       const sanitizedCards = cards.map(({ question, answer }) => ({
         question,
         answer,
       }));
-      const jsonData = JSON.stringify(sanitizedCards, null, 2);
-      const blob = new Blob([jsonData], { type: "application/json" });
+
+      let data, blob, filename;
+      if (format === "json") {
+        data = JSON.stringify(sanitizedCards, null, 2);
+        blob = new Blob([data], { type: "application/json" });
+        filename = "flashcards.json";
+      } else if (format === "csv") {
+        data = convertToCSV(sanitizedCards);
+        blob = new Blob([data], { type: "text/csv" });
+        filename = "flashcards.csv";
+      }
+
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "flashcards.json";
+      a.download = filename;
       a.click();
-      URL.revokeObjectURL(url); // Clean up to avoid memory leaks
-      addError({ msg: "Cards exported successfully", type: "success" });
+      URL.revokeObjectURL(url);
+      addError({
+        msg: `Cards exported successfully as ${format}`,
+        type: "success",
+      });
     } catch (error) {
       console.error("Error exporting cards:", error);
       addError({ msg: "Error exporting cards", type: "danger" });
@@ -76,15 +95,38 @@ export function NavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <button
-                className="nav-link btn btn-link"
-                onClick={handleExportCards}
-                id="export-cards"
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-                Export All Cards
-              </button>
+                Export Cards
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={() => handleExportCards("json")}
+                  >
+                    Export as JSON
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={() => handleExportCards("csv")}
+                  >
+                    Export as CSV
+                  </a>
+                </li>
+              </ul>
             </li>
             <li className="nav-item">
               <button

@@ -4,7 +4,7 @@
 }
 
 .login-title {
-  color: #fff;
+  color: var(--color-card-bg);
   font:
     5em "Yeseva One",
     serif;

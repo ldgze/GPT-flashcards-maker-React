@@ -1,0 +1,53 @@
+/* NavBar.css */
+.navBar,
+.navbar {
+  background-color: var(--color-navBar-footer);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.navbar-brand {
+  font-family: "Yeseva One", serif;
+  color: var(--color-card-bg);
+  font-size: 1.5em;
+}
+
+.navbar-toggler {
+  border-color: var(--color-card-bg);
+}
+
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link,
+.navbar-nav .btn-link {
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--color-card-bg);
+  padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .btn-link:hover {
+  color: var(--color-primary-light); /* Hover effect */
+}
+
+.navbar-nav .nav-item .dropdown-menu {
+  background-color: var(--color-navBar-footer);
+}
+
+.navbar-nav .nav-item .dropdown-menu .dropdown-item {
+  color: var(--color-card-bg);
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav-item {
+    width: 100%;
+  }
+}
