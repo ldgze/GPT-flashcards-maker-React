@@ -48,11 +48,11 @@ See the [Design Document](./deisgn-document.md) file for details.
 
 The GPT Flashcards Maker employs a distinctive color palette:
 
-- Success: ![#8a8834](https://placehold.co/15x15/8a8834/FFF) '#8a8834' - A greenish hue for positive feedback.
-- Danger: ![#8a3435](https://placehold.co/15x15/8a3435/FFF) '#8a3435' - A reddish hue for warnings and errors.
-- Primary: ![#34698a](https://placehold.co/15x15/34698a/FFF) '#34698a' - A calming blueish hue for main elements.
-- NavBar & Footer: ![#262f35](https://placehold.co/15x15/262f35/FFF) '#262f35' - Dark gray for contrast and modern look.
-- Card Background: ![#ffffe0](https://placehold.co/15x15/ffffe0/FFF) '#ffffe0' - Cream color for readability and warmth.
+- Success: ![#8a8834](https://placehold.co/15x15/8a8834/FFF) `#8a8834` - A greenish hue for positive feedback.
+- Danger: ![#8a3435](https://placehold.co/15x15/8a3435/FFF) `#8a3435` - A reddish hue for warnings and errors.
+- Primary: ![#34698a](https://placehold.co/15x15/34698a/FFF) `#34698a` - A calming blueish hue for main elements.
+- NavBar & Footer: ![#262f35](https://placehold.co/15x15/262f35/FFF) `#262f35` - Dark gray for contrast and modern look.
+- Card Background: ![#ffffe0](https://placehold.co/15x15/ffffe0/FFF) `#ffffe0` - Cream color for readability and warmth.
 
 These colors enhance the application's aesthetics and user experience.
 
