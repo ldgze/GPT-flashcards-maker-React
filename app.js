@@ -35,4 +35,9 @@ app.use(passport.authenticate("session"));
 app.use("/", indexRouter);
 app.use("/", authRouter);
 
+// All remaining requests return the React app, so it can handle routing
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "front", "dist", "index.html"));
+});
+
 export default app;
