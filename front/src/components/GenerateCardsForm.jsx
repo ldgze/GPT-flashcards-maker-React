@@ -50,7 +50,7 @@ export default function GenerateCardsForm({ onCardsGenerated }) {
               className="form-control"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              placeholder="Enter the text you want to use for generating flashcards."
+              placeholder="Enter any text you want to use for generating flashcards. eg: 'The quick brown fox jumps over the lazy dog.'"
               required
             />
           </div>

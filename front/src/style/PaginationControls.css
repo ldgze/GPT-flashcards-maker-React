@@ -9,6 +9,9 @@
     background-color 0.2s,
     border-color 0.2s,
     box-shadow 0.2s; /* Smooth transitions */
+  font:
+    1.2em "Josefin Sans",
+    sans-serif; /* Larger font size */
 }
 
 .pagination .page-link:hover {

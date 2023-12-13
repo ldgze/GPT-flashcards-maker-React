@@ -5,6 +5,9 @@
 
 .register-title {
   color: #fff; /* Adjust title color if needed */
+  font:
+    5em "Yeseva One",
+    serif;
 }
 
 /* Add additional styles for your registration page here */

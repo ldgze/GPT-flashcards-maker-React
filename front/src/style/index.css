@@ -9,6 +9,8 @@
   --color-danger-light: hsl(358, 29%, 45%); /* Lighter version of #8a3435 */
   --color-primary-light: hsl(204, 29%, 45%); /* Lighter version of #34698a */
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Yeseva One", serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -35,6 +37,9 @@ body {
   padding: 0.6em 1.2em; /* More padding for better button size */
   font-size: 1em; /* Adjust font size as needed */
   font-weight: 500; /* Bolder font for better readability */
+  font:
+    1.2em "Josefin Sans",
+    sans-serif;
   border-radius: 0.25em; /* Rounded corners for a modern look */
   transition:
     background-color 0.2s,
@@ -89,6 +94,9 @@ body {
 
 h1 {
   line-height: 1.1;
+  font:
+    2.5em "Yeseva One",
+    serif;
 }
 
 .card {
@@ -104,22 +112,55 @@ h1 {
 .card-title {
   color: #333;
   font-weight: bold;
+  font:
+    1.5em "Yeseva One",
+    serif;
 }
 
 .card-text {
   color: #555;
+  font:
+    1.2em "Josefin Sans",
+    sans-serif;
 }
 
-.card input[type="text"] {
+.card input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font:
+    1em "Josefin Sans",
+    sans-serif;
+}
+
+.card label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font:
+    1em "Yeseva One",
+    sans-serif;
+}
+
+.card textarea {
+  height: 100px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font:
+    1em "Josefin Sans",
+    sans-serif;
 }
 
 .footer {
   background-color: var(--color-navBar-footer);
+  font:
+    1em "Josefin Sans",
+    sans-serif;
 }
 
 .navBar {
@@ -128,6 +169,19 @@ h1 {
   top: 0;
   width: 100%;
   z-index: 1;
+  font:
+    1.2em "Josefin Sans",
+    sans-serif;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  font:
+    1.2em "Josefin Sans",
+    sans-serif;
 }
 
 .create-card-form {

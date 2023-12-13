@@ -5,6 +5,13 @@
 
 .login-title {
   color: #fff;
+  font:
+    5em "Yeseva One",
+    serif;
 }
-
-/* Add other styles you need for your login page here */
+.login-page-body form-floating text {
+  color: #fff;
+  font:
+    5em "Yeseva One",
+    serif;
+}

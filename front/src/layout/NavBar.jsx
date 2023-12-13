@@ -19,7 +19,7 @@ export function NavBar() {
         addError({
           msg: "Logout successful. Please enter your credentials. The default username is 'user' and the default password is 'password'",
           type: "info",
-          timeout: 5000,
+          duration: 5000,
         });
         navigate("/login"); // Redirect to login page after successful logout
       } else {

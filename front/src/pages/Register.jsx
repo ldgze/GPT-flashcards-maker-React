@@ -36,7 +36,7 @@ export default function Register() {
       addError({
         msg: "Signup successful, please log in",
         type: "success",
-        duration: 2000,
+        duration: 1000,
       });
       navigate("/login"); // Navigate to login page
     }
