@@ -24,6 +24,7 @@ export default function BasePage({ children }) {
           <ErrorMessage
             key={index}
             type={error.type}
+            duration={error.duration}
             onClose={() => removeError(index)}
           >
             <strong>{error.msg}</strong>

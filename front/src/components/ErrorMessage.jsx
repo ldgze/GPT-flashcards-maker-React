@@ -2,17 +2,23 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../style/ErrorMessage.css";
 
-export function ErrorMessage({ children, type = "warning", onClose }) {
+export function ErrorMessage({
+  children,
+  type = "warning",
+  onClose,
+  duration = 3000,
+}) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    console.log("Message", duration);
     const timer = setTimeout(() => {
       setVisible(false);
       if (onClose) onClose();
-    }, 2000); // Message disappears after 5000 milliseconds (5 seconds)
+    }, duration); // Use the duration prop here
 
-    return () => clearTimeout(timer); // Clear the timer if the component unmounts
-  }, [onClose]);
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, [onClose, duration]); // Add duration to the dependency array
 
   if (!visible) return null;
 
@@ -36,4 +42,5 @@ ErrorMessage.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.string,
   onClose: PropTypes.func,
+  duration: PropTypes.number, // Add duration to PropTypes
 };

@@ -33,7 +33,11 @@ export default function Register() {
       const data = await res.json();
       addError({ msg: data.msg, type: "danger" });
     } else {
-      addError({ msg: "Signup successful, please log in", type: "success" });
+      addError({
+        msg: "Signup successful, please log in",
+        type: "success",
+        duration: 2000,
+      });
       navigate("/login"); // Navigate to login page
     }
   };

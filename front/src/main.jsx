@@ -28,6 +28,7 @@ function RootComponent() {
   const [errors, setErrors] = useState([]);
 
   const addError = useCallback((newError) => {
+    console.log("Erorrs", newError.duration);
     setErrors((prevErrors) => [...prevErrors, newError]);
   }, []); // Empty dependency array for useCallback
 

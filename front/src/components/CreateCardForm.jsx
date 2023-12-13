@@ -19,7 +19,7 @@ export default function CreateCardForm({ onCardCreated }) {
         body: JSON.stringify({ question, answer }),
       });
       if (response.ok) {
-        addError({ msg: "Card created", type: "success" });
+        addError({ msg: "Card created", type: "success", duration: 1000 });
         onCardCreated(); // Callback to refresh the card list
       } else {
         // Handle errors

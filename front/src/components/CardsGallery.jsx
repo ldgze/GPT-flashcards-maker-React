@@ -80,6 +80,7 @@ export function CardsGallery({
       addError({
         msg: "Card deleted.",
         type: "success",
+        duration: 1000,
       });
       // Refresh cards list after delete
       // ...

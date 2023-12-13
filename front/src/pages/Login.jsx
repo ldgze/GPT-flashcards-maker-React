@@ -34,7 +34,7 @@ export default function Login() {
       addError({ msg: data.msg, type: "danger" });
     } else {
       clearErrors();
-      addError({ msg: "Login successful", type: "success" });
+      addError({ msg: "Login successful", type: "success", duration: 700 });
       navigate("/");
     }
   };

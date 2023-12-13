@@ -40,12 +40,9 @@ export default function Dashboard() {
       if (res.status === 401) {
         clearErrors();
         addError({
-          msg: "Please enter your credentials. If you don't have an account, please register first.",
+          msg: "Please enter your credentials. The default username is 'user' and the default password is 'password'",
           type: "info",
-        });
-        addError({
-          msg: "The default username is 'user' and the default password is 'password'",
-          type: "info",
+          duration: 5000,
         });
         navigate("/login"); // Navigate to login on 401 status
         return;

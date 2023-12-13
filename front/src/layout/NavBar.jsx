@@ -16,14 +16,10 @@ export function NavBar() {
       });
       if (response.ok) {
         clearErrors();
-        addError({ msg: "Logout successful", type: "success" });
         addError({
-          msg: "Please enter your credentials. If you don't have an account, please register first.",
+          msg: "Logout successful. Please enter your credentials. The default username is 'user' and the default password is 'password'",
           type: "info",
-        });
-        addError({
-          msg: "The default username is 'user' and the default password is 'password'",
-          type: "info",
+          timeout: 5000,
         });
         navigate("/login"); // Redirect to login page after successful logout
       } else {
