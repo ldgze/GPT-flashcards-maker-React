@@ -162,3 +162,10 @@ Bootstrap
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Code Review - Jishva Shah
+You really did a good job! The website has a smooth flow and the code structure is clear and easy to understand. 
+Here are some small things that i'd like to suggest:
+1. The alerts displayed on screen can be implemented in such way that they disappear after some time, so that user don't have to click on 'x' everytime and alerts won't fill up the screen.
+2. Also the alignment for creating flashcards can be better. Displaying them and generating them can be in two different pages.
+Overall, really liked your website!
